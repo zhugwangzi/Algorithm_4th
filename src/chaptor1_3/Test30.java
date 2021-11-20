@@ -22,22 +22,22 @@ public class Test30<Item> {
 		}
 		N++;
 	}
-//	public Node reverse(Node x) {//方法1：依次复制结点到新链表
-//		if(N==0) {
-//			return null;
-//		}
-//		Node reverse=createNode(first.item);//新链表的首结点
-//		for(x=first.next;x!=null;x=x.next) {
-//			Node t=createNode(x.item);//复制当前结点到t
-//			t.next=reverse;//添加t到reverse前面
-//			reverse=t;//重命名t为reverse
-//		}
-//		first=reverse;//重命名reverse为first
-//		return first;
-//	}
-	public Node reverse(Node x) {//方法2：依次翻转 → 为 ←
+	public Node reverse1(Node x) {//方法1：依次复制结点到新链表
 		if(N<2) {
 			return first;
+		}
+		Node reverse=createNode(first.item);//新链表的首结点
+		for(x=first.next;x!=null;x=x.next) {//从第2个结点开始遍历
+			Node t=createNode(x.item);//复制当前结点到t
+			t.next=reverse;//添加t到reverse前面
+			reverse=t;//重命名t为reverse
+		}
+		first=reverse;//重命名reverse为first
+		return first;
+	}
+	public Node reverse2(Node x) {//方法2：依次翻转 → 为 ←
+		if(N<2) {
+			return first; 
 		}
 		Node left=first;//把first①变成left①→first②→right③
 		first=first.next;
@@ -52,6 +52,28 @@ public class Test30<Item> {
 		}
 		return first;
 	}
+	public Node reverse2_1(Node x) {//方法2优化版
+		Node reverse =null;
+		Node second;
+		for(;first!=null;first=second) {//指针first遍历每个结点
+			second=first.next;
+			first.next=reverse;//把reverse   first→second变成reverse←first   second
+			reverse=first;//指针reverse,first,second右移
+		}
+		first=reverse;//结束时reverse是尾结点
+		return first;
+	}
+	public Node reverse3(Node x) {//递归解法
+		if(x==null||x.next==null) {//若x是尾结点或null则返回x
+			return x;
+		}
+		Node second=x.next;
+		Node rest=reverse3(second);
+		second.next=x;
+		x.next=null;
+		first=rest;
+		return rest;
+	}
 	public static void main(String[] args) {
 		Test30<String> t=new Test30<String>();
 		t.add("a");
@@ -61,7 +83,7 @@ public class Test30<Item> {
 		t.add("e");
 		t.add("f");
 		t.add("g");
-		System.out.println(t.reverse(t.first));
+		System.out.println(t.reverse3(t.first));
 		for(Test30<String>.Node x=t.first;x!=null;x=x.next) {
 			System.out.println(x.item);
 		}
