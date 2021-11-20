@@ -63,16 +63,15 @@ public class Test30<Item> {
 		first=reverse;//结束时reverse是尾结点
 		return first;
 	}
-	public Node reverse3(Node x) {//递归解法
+	public Node reverse3(Node x) {//递归翻转x结点后面的整条链表，返回翻转链表的首结点
 		if(x==null||x.next==null) {//若x是尾结点或null则返回x
 			return x;
 		}
-		Node second=x.next;
-		Node rest=reverse3(second);
-		second.next=x;
-		x.next=null;
-		first=rest;
-		return rest;
+		Node second=x.next;//x→second→...→null
+		Node rest=reverse3(second);//翻转second结点后面的整条链表，返回翻转链表的首结点
+		second.next=x;//把x→second→...变成x←second
+		x.next=null;//null←x
+		return rest;//递归结束后返回首结点，first不再是首结点
 	}
 	public static void main(String[] args) {
 		Test30<String> t=new Test30<String>();
@@ -83,8 +82,8 @@ public class Test30<Item> {
 		t.add("e");
 		t.add("f");
 		t.add("g");
-		System.out.println(t.reverse3(t.first));
-		for(Test30<String>.Node x=t.first;x!=null;x=x.next) {
+		Test30<String>.Node x=t.reverse3(t.first);
+		for(;x!=null;x=x.next) {
 			System.out.println(x.item);
 		}
 	}
