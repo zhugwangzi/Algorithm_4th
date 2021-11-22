@@ -21,7 +21,7 @@ public class Test04 {
         return false;
     }
 	public static void main(String[] args) {
-		System.out.println("ÊäÈëº¬ÓĞ (){}[] µÄ×Ö·û´®:");
+		System.out.println("è¾“å…¥å­—ç¬¦ä¸²:");
 		String str=StdIn.readLine();
 		System.out.println(isValid(str));
 	}
