@@ -6,6 +6,20 @@ public class Test19<Item>{
 	}
 	private Node first;//首结点
 	private int N;//结点个数
+<<<<<<< HEAD
+	public Node createNode(Item item) {
+		Node x=new Node();
+		x.item=item;
+		return x;
+	}
+	public void add(Item x) {//向表头添加结点
+		Node p=createNode(x);
+		p.next=first;
+		first=p;
+	}
+	public void delete() {//删除尾结点
+		if(N==1) {//只有1个结点就删除首结点
+=======
 	public boolean isEmpty() {
 		return N==0;
 	}
@@ -27,6 +41,7 @@ public class Test19<Item>{
 	}
 	public void delete() {//删除尾结点
 		if(size()==1) {//只有1个结点就删除首结点
+>>>>>>> 202976f3c5e3b649e616edd6dc61ecc7070802cb
 			first=null;
 		}else {
 			Node p=first;//指针结点指向first
@@ -54,7 +69,11 @@ public class Test19<Item>{
 		 * 内部类对象实例化需要在外部类的对象、类或方法中实现
 		 */
 		System.out.println();
+<<<<<<< HEAD
+		for(int i=0;i<t.N;i++) {
+=======
 		for(int i=0;i<t.size();i++) {
+>>>>>>> 202976f3c5e3b649e616edd6dc61ecc7070802cb
 			System.out.print(p.item+"  ");
 			p=p.next;
 		}
