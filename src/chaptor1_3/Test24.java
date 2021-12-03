@@ -13,11 +13,21 @@ public class Test24 <Item>{
 	}
 	public void add(Item item) {//向表尾添加元素
 		if(N==0) {
+<<<<<<< HEAD
 			first=createNode(item);
 		}else {
 			Node p;//指针结点
 			for(p=first;p.next!=null;p=p.next);//结束后p指向尾结点
 			Node last=createNode(item);
+=======
+			first=new Node();
+			first.item=item;
+		}else {
+			Node p;//指针结点
+			for(p=first;p.next!=null;p=p.next);//结束后p指向尾结点
+			Node last=new Node();
+			last.item=item;
+>>>>>>> 202976f3c5e3b649e616edd6dc61ecc7070802cb
 			p.next=last;
 		}
 		N++;
@@ -46,8 +56,17 @@ public class Test24 <Item>{
 		t.add("e");
 		Test24<String>.Node n=t.createNode("c");
 		t.removeAfter(n);
+<<<<<<< HEAD
 		for(Test24<String>.Node x=t.first;x!=null;x=x.next) {
 			System.out.println(x.item);
+=======
+		
+		Test24<String>.Node p=t.new Node();
+		p=t.first;
+		for(int i=0;i<t.N;i++) {
+			System.out.println(p.item);
+			p=p.next;
+>>>>>>> 202976f3c5e3b649e616edd6dc61ecc7070802cb
 		}
 	}
 }
