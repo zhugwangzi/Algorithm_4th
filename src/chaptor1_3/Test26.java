@@ -11,8 +11,7 @@ public class Test26<Item> {
 		x.item=item;
 		return x;
 	}
-<<<<<<< HEAD
-	public void add(Item x) {//向表头添加结点
+	public void addFisrt(Item x) {//向表头添加结点
 		Node p=createNode(x);
 		p.next=first;
 		first=p;
@@ -26,7 +25,7 @@ public class Test26<Item> {
 //			p.next=createNode(x);
 //		}
 //		N++;
-	public void remove(Node x,String key) {
+	public void remove1(Node x,String key) {
 		N=0;//新链表的容量
 		Node m=null;
 		for(x=first;x!=null;x=x.next) {//遍历原链表
@@ -38,8 +37,8 @@ public class Test26<Item> {
 			}
 		}
 		first=m;
-=======
-	public void add(Item x) {
+	}
+	public void addLast(Item x) {
 		if(N==0) {
 			first=new Node();
 			first.item=x;
@@ -52,7 +51,7 @@ public class Test26<Item> {
 		}
 		N++;
 	}
-	public void remove(Node x,String key) {
+	public void remove2(Node x,String key) {
 		if(key==null||N==0) {
 			return;
 		}
@@ -75,24 +74,19 @@ public class Test26<Item> {
 			}
 		}
 		first=m;//把t修改别名为first
->>>>>>> 202976f3c5e3b649e616edd6dc61ecc7070802cb
 	}
 	public static void main(String[] args) {
 		Test26<String> t=new Test26<String>();
-		t.add("d");
-		t.add("e");
-		t.add("xb");
-		t.add("b");
-		t.add("v");
-		t.add("d");
-		t.add("b ");
+		t.addLast("d");
+		t.addLast("e");
+		t.addLast("xb");
+		t.addLast("b");
+		t.addLast("v");
+		t.addLast("d");
+		t.addLast("b ");
 		Test26<String>.Node x=t.new Node();
-<<<<<<< HEAD
 		String key="d";
-=======
-		String key="3";
->>>>>>> 202976f3c5e3b649e616edd6dc61ecc7070802cb
-		t.remove(x,key);
+		t.remove1(x,key);
 		System.out.println(t.N);
 		Test26<String>.Node p=t.first;
 		for(;p!=null;p=p.next) {

@@ -11,37 +11,22 @@ public class Test24 <Item>{
 		x.item=item;
 		return x;
 	}
-	public void add(Item item) {//向表尾添加元素
+	public void addLast(Item item) {//向表尾添加元素
 		if(N==0) {
-<<<<<<< HEAD
 			first=createNode(item);
 		}else {
 			Node p;//指针结点
 			for(p=first;p.next!=null;p=p.next);//结束后p指向尾结点
-			Node last=createNode(item);
-=======
-			first=new Node();
-			first.item=item;
-		}else {
-			Node p;//指针结点
-			for(p=first;p.next!=null;p=p.next);//结束后p指向尾结点
-			Node last=new Node();
-			last.item=item;
->>>>>>> 202976f3c5e3b649e616edd6dc61ecc7070802cb
-			p.next=last;
+			p.next=createNode(item);
 		}
 		N++;
 	}
 	public void removeAfter(Node x) {
 		Node p;//指针结点
-		if(x==null) {//参数结点为空
-			return;
-		}
+		if(x==null) {return;	}
 		for(p=first;p!=null;p=p.next) {//遍历每个结点
 			if(p.item.equals(x.item)) {//查找到参数结点
-				if(p.next==null) {//参数结点的后序结点为空
-					return;
-				}
+				if(p.next==null) {return;}//参数结点的后序结点为空
 				p.next=p.next.next;//删除后续结点
 				N--;
 			}
@@ -49,24 +34,22 @@ public class Test24 <Item>{
 	}
 	public static void main(String[] args) {
 		Test24<String> t=new Test24<String>();
-		t.add("a");
-		t.add("b");
-		t.add("c");
-		t.add("d");
-		t.add("e");
+		t.addLast("a");
+		t.addLast("b");
+		t.addLast("c");
+		t.addLast("d");
+		t.addLast("e");
+		for(Test24<String>.Node x=t.first;x!=null;x=x.next) {
+			System.out.print(x.item+" ");
+		}
 		Test24<String>.Node n=t.createNode("c");
 		t.removeAfter(n);
-<<<<<<< HEAD
-		for(Test24<String>.Node x=t.first;x!=null;x=x.next) {
-			System.out.println(x.item);
-=======
-		
 		Test24<String>.Node p=t.new Node();
 		p=t.first;
+		System.out.println("\n移除c后面的节点后，原链表：");
 		for(int i=0;i<t.N;i++) {
-			System.out.println(p.item);
+			System.out.print(p.item+" ");
 			p=p.next;
->>>>>>> 202976f3c5e3b649e616edd6dc61ecc7070802cb
 		}
 	}
 }
