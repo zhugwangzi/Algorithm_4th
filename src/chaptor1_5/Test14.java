@@ -1,25 +1,25 @@
 package chaptor1_5;
 import java.util.Arrays;
 /*
-Ö¤Ã÷ÌâÄ¿£º
-ÉèÁ¬³ÉÒ»¿Ã¸ß¶ÈÎªn(n>=1)µÄÊ÷ËùÐèµÄ×îÉÙµãÊýÎªk(n),¼Ç×÷h(k(n))=n£¬
-¼´h(k(1))=1,h(k(2))=2,...£¬ÔòÓÐ½áÂÛ¢Ùh(k(n))=h(k(n-1))+1;
+è¯æ˜Žé¢˜ç›®ï¼š
+è®¾è¿žæˆä¸€æ£µé«˜åº¦ä¸ºn(n>=1)çš„æ ‘æ‰€éœ€çš„æœ€å°‘ç‚¹æ•°ä¸ºk(n),è®°ä½œh(k(n))=nï¼Œ
+å³h(k(1))=1,h(k(2))=2,...ï¼Œåˆ™æœ‰ç»“è®ºâ‘ h(k(n))=h(k(n-1))+1;
 
-ÏÂÃæÖ¤Ã÷½áÂÛ¢Ú£º¶Ô¶¨ÒåÓòÄÚÈÎÒâµÄx1<x2,ÓÐh(x1)<h(x2).
-Èô´æÔÚx1<x2Ê¹µÃh(x1)=h(x2),ÔòÁ¬³Éh(x2)¸ß¶ÈµÄÊ÷µÄ×îÐ¡µãÊýÊÇx1£¬ÓëÌâÒâ²»·û£»
-Èô´æÔÚx1<x2Ê¹µÃh(x1)>h(x2),Ôò¿ÉÒÔ°Ñh(x1)Ê÷È¥µô²¿·Öµãºó£¬Ê¹µÃÊ£ÏÂx3(x3<x1)
-¸öµã¹¹³ÉµÄÊ÷h(x3)=h(x2)£¬¼´Á¬³Éh(x2)¸ß¶ÈµÄÊ÷µÄ×îÐ¡µãÊýx3<x2£¬ÓëÌâÒâ²»·û£»
-Òò´Ë½áÂÛ¢Ú³ÉÁ¢¡£
+ä¸‹é¢è¯æ˜Žç»“è®ºâ‘¡ï¼šå¯¹å®šä¹‰åŸŸå†…ä»»æ„çš„x1<x2,æœ‰h(x1)<h(x2).
+è‹¥å­˜åœ¨x1<x2ä½¿å¾—h(x1)=h(x2),åˆ™è¿žæˆh(x2)é«˜åº¦çš„æ ‘çš„æœ€å°ç‚¹æ•°æ˜¯x1ï¼Œä¸Žé¢˜æ„ä¸ç¬¦ï¼›
+è‹¥å­˜åœ¨x1<x2ä½¿å¾—h(x1)>h(x2),åˆ™å¯ä»¥æŠŠh(x1)æ ‘åŽ»æŽ‰éƒ¨åˆ†ç‚¹åŽï¼Œä½¿å¾—å‰©ä¸‹x3(x3<x1)
+ä¸ªç‚¹æž„æˆçš„æ ‘h(x3)=h(x2)ï¼Œå³è¿žæˆh(x2)é«˜åº¦çš„æ ‘çš„æœ€å°ç‚¹æ•°æ˜¯x3ï¼Œä¸Žé¢˜æ„ä¸ç¬¦ï¼›
+å› æ­¤ç»“è®ºâ‘¡æˆç«‹ã€‚
 
-Á½¿ÃÓÉk(n-1)¸öµã×é³ÉµÄ×î¸ßµÄÊ÷ºÏ²¢£¬¸ß¶È»á¼Ó1£¬¼´½áÂÛ¢Û£ºh(k(n-1)+k(n-1))=h(2*k(n-1))=h(k(n-1))+1
-ÓÉ¢Ù¢Û¿ÉÖªh(2*k(n-1))=h(k(n))£¬ÔÙÓÉ¢Ú¿ÉµÃk(n)=2*k(n-1)=4*k(n-2)=...=2^(n-1)*k(1).
-Ò×Öªk(1)=2,¹Êk(n)=2^n.¼ÇN=2^n,Ôòn=logN£¬N¸öµãÐÎ³ÉµÄ×î´ó¸ß¶Èh(N)=n=logN£¬Ö¤±Ï¡£
+ä¸¤æ£µç”±k(n-1)ä¸ªç‚¹ç»„æˆçš„æœ€é«˜çš„æ ‘åˆå¹¶ï¼Œé«˜åº¦ä¼šåŠ 1ï¼Œå³ç»“è®ºâ‘¢ï¼šh(k(n-1)+k(n-1))=h(2*k(n-1))=h(k(n-1))+1
+ç”±â‘ â‘¢å¯çŸ¥h(2*k(n-1))=h(k(n))ï¼Œå†ç”±â‘¡å¯å¾—k(n)=2*k(n-1)=4*k(n-2)=...=2^(n-1)*k(1).
+æ˜“çŸ¥k(1)=2,æ•…k(n)=2^n.è®°N=2^n,åˆ™n=logNï¼ŒNä¸ªç‚¹å½¢æˆçš„æœ€å¤§é«˜åº¦h(N)=n=logNï¼Œè¯æ¯•ã€‚
  */
 public class Test14 {
-	private int[] id;//iÊÇ´¥µã£¬id[i]±íÊ¾iµÄ¸¸½Úµã
-	private int[] height;//µÚi¿ÃÊ÷µÄ¸ß¶È
-	private int count;//·ÖÁ¿ÊýÄ¿
-	public Test14(int N) {//³õÊ¼»¯N¸ö·ÖÁ¿¡¢N¸ö´¥µã¡¢N¿ÃÊ÷
+	private int[] id;//iæ˜¯è§¦ç‚¹ï¼Œid[i]è¡¨ç¤ºiçš„çˆ¶èŠ‚ç‚¹
+	private int[] height;//ç¬¬iæ£µæ ‘çš„é«˜åº¦
+	private int count;//åˆ†é‡æ•°ç›®
+	public Test14(int N) {//åˆå§‹åŒ–Nä¸ªåˆ†é‡ã€Nä¸ªè§¦ç‚¹ã€Næ£µæ ‘
 		count=N;
 		id=new int[N];
 		height=new int[N];
@@ -28,30 +28,30 @@ public class Test14 {
 	public boolean isConnected(int p,int q) {return find(p)==find(q);}
 	public int find(int p) {
 		while(p!=id[p]) {p=id[p];}
-		return p;//¸ù½Úµã
+		return p;//æ ¹èŠ‚ç‚¹
 	}
 	public void union(int p,int q) {
-		int proot=find(p);//¸ù½Úµã
+		int proot=find(p);//æ ¹èŠ‚ç‚¹
 		int qroot=find(q);
-		if(proot==qroot) {return;}//p,qÔÚÍ¬Ò»¸ö·ÖÁ¿ÀïÃæ¾Í½áÊø
-		if(height[proot]<height[qroot]) {//×ÜÊÇ°ÑÐ¡Ê÷Á´½Óµ½´óÊ÷
-			id[proot]=qroot;//prootÁ´½Óµ½qroot
+		if(proot==qroot) {return;}//p,qåœ¨åŒä¸€ä¸ªåˆ†é‡é‡Œé¢å°±ç»“æŸ
+		if(height[proot]<height[qroot]) {//æ€»æ˜¯æŠŠå°æ ‘é“¾æŽ¥åˆ°å¤§æ ‘
+			id[proot]=qroot;//prooté“¾æŽ¥åˆ°qroot
 		}else {
-			id[qroot]=proot;//qrootÁ´½Óµ½proot
-			if(height[proot]==height[qroot]) {height[proot]+=1;}//prootÊ÷¸ß¶È+1
+			id[qroot]=proot;//qrooté“¾æŽ¥åˆ°proot
+			if(height[proot]==height[qroot]) {height[proot]+=1;}//prootæ ‘é«˜åº¦+1
 		}
 		count--;
 	}
 	public static void main(String[] args) {
 		int[][] a= {{9,0},{3,4},{5,8},{7,2},{2,1},{5,7},{0,3},{4,2}};
 		Test14 t=new Test14(10);
-		System.out.println("Î´´¦ÀíµÄ´¥µãÊý×é£º	      "+Arrays.toString(t.id));
+		System.out.println("æœªå¤„ç†çš„è§¦ç‚¹æ•°ç»„ï¼š	      "+Arrays.toString(t.id));
 		for(int[] x:a) {
 			t.union(x[0],x[1]);
-			System.out.println("´¦Àí "+Arrays.toString(x)+" ºóµÄ´¥µãÊý×é£º"+
+			System.out.println("å¤„ç† "+Arrays.toString(x)+" åŽçš„è§¦ç‚¹æ•°ç»„ï¼š"+
 					Arrays.toString(t.id));
 		}
-		System.out.print("Ã¿¸ö´¥µã¶ÔÓ¦µÄ×ÓÊ÷¸ß¶È£º");
+		System.out.print("æ¯ä¸ªè§¦ç‚¹å¯¹åº”çš„å­æ ‘é«˜åº¦ï¼š");
 		for(int x: t.height){
 			System.out.print(x+" ");
 		}
